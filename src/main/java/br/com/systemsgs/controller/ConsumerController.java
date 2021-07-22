@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,6 +22,13 @@ public class ConsumerController {
 	
 	@Autowired
 	private ClienteConsumerClient clienteConsumerClient;
+	
+	@PostMapping(value = "/salvar")
+	public String salvaCliente(@RequestBody ModelClienteConsumerDTO modelClienteConsumerDTO){
+		clienteConsumerClient.salvaCliente(modelClienteConsumerDTO);
+		
+		return "Opa! Salvou o Cliente com Sucesso na Api Payment-Service";
+	}
 	
 	@GetMapping(value = "/listar")
 	public List<ModelClienteConsumerDTO> listTodosClientes(){
@@ -37,5 +46,5 @@ public class ConsumerController {
 		
 		return ResponseEntity.ok(clientePesquisado);
 	}
-
+	
 }
