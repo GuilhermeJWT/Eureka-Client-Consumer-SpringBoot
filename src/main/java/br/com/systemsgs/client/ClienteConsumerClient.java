@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import br.com.systemsgs.dto.ModelClienteConsumerDTO;
 
@@ -12,5 +13,8 @@ public interface ClienteConsumerClient {
 	
 	@GetMapping(value = "/listaTodos")
 	List<ModelClienteConsumerDTO> listaTodosClientes();
+	
+	@GetMapping(value = "/pesquisar/{id}")
+	ModelClienteConsumerDTO pesquisaPorId(@PathVariable("id") Long id);
 
 }
