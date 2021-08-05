@@ -3,6 +3,7 @@ package br.com.systemsgs.client;
 import java.util.List;
 
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -16,5 +17,8 @@ public interface ProdutoConsumerClient {
 	
 	@GetMapping(value = "/pesquisar/{id}")
 	ModelProdutosConsumerDTO pesquisaProdutoPorId(@PathVariable("id") Long id);
+	
+	@DeleteMapping(value = "/deletar/{id}")
+	String deletarProduto(@PathVariable("id") Long id);
 
 }
